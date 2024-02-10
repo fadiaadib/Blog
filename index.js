@@ -10,7 +10,7 @@ app.use(express.static("public"));
 
 // Blog Home Page
 app.get("/", (req, res) => {
-  res.render("index.ejs", {
+  res.render("blog.ejs", {
     posts: getPosts(),
   });
 });

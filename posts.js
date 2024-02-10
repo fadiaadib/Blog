@@ -1,6 +1,7 @@
 import fs from "fs";
 
 let posts = [];
+const dataPath = "./data.txt";
 
 function getPostIdx(id) {
   return posts.findIndex((element) => {
@@ -11,7 +12,7 @@ function getPostIdx(id) {
 function savePosts() {
   var data = JSON.stringify(posts);
 
-  fs.writeFile("./data.txt", data, (err) => {
+  fs.writeFile(dataPath, data, (err) => {
     if (err) {
       throw err;
     } else {
@@ -21,7 +22,7 @@ function savePosts() {
 }
 
 function loadPosts() {
-  fs.readFile("./data.txt", { encoding: "utf8" }, (error, data) => {
+  fs.readFile(dataPath, { encoding: "utf8" }, (error, data) => {
     if (error) {
       throw error;
     } else {
