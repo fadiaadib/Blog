@@ -1,33 +1,35 @@
 <%- include("partials/header.ejs") %>
 <div class="container">
   <div class="row">
-    <div class="col">
-      <% if(!locals.post) { %>
-        <form method="post" action="/post" class="m-3">
-          <div class="mb-3">
-            <label for="title" class="form-label">Post title</label>
-            <input autofocus="true" type="text" placeholder="Enter post title" name="title" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label for="body" class="form-label">Post body</label>
-            <textarea name="body" placeholder="Enter post body" rows="20" class="form-control"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary end">Submit</button>
-        </form>
-      <% } else { %>
-        <form method="post" action="/<%= locals.post.id  %>" class="m-3">
-          <div class="mb-3">
-            <label for="title" class="form-label">Post title</label>
-            <input type="text" placeholder="Enter post title" name="title" class="form-control" value="<%= locals.post.title  %>">
-          </div>
-          <div class="mb-3">
-            <label for="body" class="form-label">Post body</label>
-            <textarea name="body" placeholder="Enter post body" rows="10" class="form-control"><%= locals.post.body  %></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      <% } %>
-    </div>
+    <% if(!locals.post) { %>
+
+    <form method="post" action="/post" class="m-3">
+      <label for="title" class="form-label">Post title</label>
+      <input autofocus="true" type="text" placeholder="Enter post title" name="title" class="form-control">
+      <label for="body" class="form-label mt-2">Post body</label>
+      <textarea name="body" placeholder="Enter post body" rows="20" class="form-control"></textarea>
+      <button type="submit" class="btn btn-primary end mt-2">Submit</button>
+    </form>
+
+
+    <% } else { %>
+    <form method="post" action="/<%= locals.post.id  %>" class="m-3">
+      <label for="title" class="form-label">Post title</label>
+      <input type="text" placeholder="Enter post title" name="title" class="form-control" value="<%= locals.post.title  %>">
+      <label for="body" class="form-label mt-2">Post body</label>
+
+      <div class="row">
+        <div class="col">
+          <textarea name="body" placeholder="Enter post body" rows="20" class="form-control"><%= locals.post.body  %></textarea>
+        </div>
+        <div class="col">
+          <p><%- post.body %></p>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    </form>
+    <% } %>
   </div>
 </div>
 <%- include("partials/footer.ejs") %>
